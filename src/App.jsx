@@ -1,5 +1,7 @@
+import Radio from "./components/Radio";
+
 function App() {
-  return <h1>ROI</h1>;
+  return <Radio />;
 }
 
 export default App;
