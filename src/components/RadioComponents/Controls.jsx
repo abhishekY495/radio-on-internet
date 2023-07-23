@@ -1,36 +1,73 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import previousLogo from "../../assets/controls/previous.svg";
+import playLogo from "../../assets/controls/play.svg";
+import stopLogo from "../../assets/controls/stop.svg";
+import nextLogo from "../../assets/controls/next.svg";
+import {
+  playStation,
+  stopStation,
+  nextStation,
+  previousStation,
+} from "../../features/radioStationsSlice";
 
 export default function Controls() {
+  const radioStationsData = useSelector((state) => state.radioStations);
+  const { loading, error, selectedStation } = radioStationsData;
+  const dispatch = useDispatch();
+
+  const nextBtnHandler = () => {
+    dispatch(nextStation());
+  };
+  const previousBtnHandler = () => {
+    dispatch(previousStation());
+  };
+  const playBtnHandler = () => {
+    dispatch(playStation());
+  };
+  const stopBtnHandler = () => {
+    dispatch(stopStation());
+  };
+
   return (
-    <div className="flex justify-around bg-neutral-800 rounded-b-lg h-[17%] ">
-      <button>
+    <>
+      {selectedStation && (
+        <audio src={selectedStation.url_resolved} autoPlay>
+          You're browser is Outdated . Please Update The Browser
+        </audio>
+      )}
+      <div className="flex justify-around bg-neutral-800 rounded-b-lg h-[17%] ">
         <img
-          src="https://img.icons8.com/?size=24&id=wiziEZE0mBR5&format=svg"
-          className="w-[80px] p-4"
+          src={previousLogo}
+          onClick={previousBtnHandler}
+          className="w-[80px] p-4 hover:cursor-pointer"
           alt=""
         />
-      </button>
-      <button>
+        {/*  */}
+        {selectedStation ? (
+          <img
+            src={stopLogo}
+            onClick={stopBtnHandler}
+            className="w-[80px] p-4 hover:cursor-pointer transition-all"
+            alt=""
+          />
+        ) : (
+          <img
+            src={playLogo}
+            onClick={playBtnHandler}
+            className="w-[80px] p-4 hover:cursor-pointer transition-all"
+            alt=""
+          />
+        )}
+        {/*  */}
         <img
-          src="https://img.icons8.com/?size=24&id=GwYlS5m5Goz6&format=svg"
-          className="w-[80px] p-4"
+          src={nextLogo}
+          onClick={nextBtnHandler}
+          className="w-[80px] p-4 hover:cursor-pointer"
           alt=""
         />
-      </button>
-      {/* <button>
-        <img
-          src="https://img.icons8.com/?size=24&id=JOEZ3mk4m85w&format=svg"
-          className="w-[80px] p-4"
-          alt=""
-        />
-      </button> */}
-      <button>
-        <img
-          src="https://img.icons8.com/?size=24&id=ltxgZ0vNvQJO&format=svg"
-          className="w-[80px] p-4"
-          alt=""
-        />
-      </button>
-    </div>
+      </div>
+    </>
   );
 }
