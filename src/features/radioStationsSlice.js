@@ -10,6 +10,7 @@ const initialState = {
   error: false,
   currentIndex: 0,
   selectedStation: null,
+  isReady: false,
 };
 
 export const fetchRadioStations = createAsyncThunk(
@@ -45,6 +46,12 @@ export const radioStationsSlice = createSlice({
     removeSelectedStation: (state) => {
       state.selectedStation = null;
     },
+    setIsReadyToTrue: (state) => {
+      state.isReady = true;
+    },
+    setIsReadyToFalse: (state) => {
+      state.isReady = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -68,5 +75,7 @@ export const {
   removeSelectedStation,
   nextStation,
   previousStation,
+  setIsReadyToTrue,
+  setIsReadyToFalse,
 } = radioStationsSlice.actions;
 export default radioStationsSlice.reducer;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import ReactPlayer from "react-player";
@@ -11,6 +11,8 @@ import {
   nextStation,
   previousStation,
   removeSelectedStation,
+  setIsReadyToTrue,
+  setIsReadyToFalse,
 } from "../../features/radioStationsSlice";
 
 export default function Controls() {
@@ -20,10 +22,12 @@ export default function Controls() {
   const dispatch = useDispatch();
 
   const nextBtnHandler = () => {
+    dispatch(setIsReadyToFalse());
     dispatch(removeSelectedStation());
     dispatch(nextStation());
   };
   const previousBtnHandler = () => {
+    dispatch(setIsReadyToFalse());
     dispatch(removeSelectedStation());
     dispatch(previousStation());
   };
@@ -40,6 +44,10 @@ export default function Controls() {
     dispatch(nextStation());
   };
 
+  const onReadyHandler = () => {
+    dispatch(setIsReadyToTrue());
+  };
+
   return (
     <>
       {selectedStation && (
@@ -50,36 +58,45 @@ export default function Controls() {
           width={0}
           height={0}
           onError={errorOnPlay}
+          onReady={onReadyHandler}
         />
       )}
       <div className="flex justify-around items-center bg-neutral-800 rounded-b-lg h-[17%]">
         <img
           src={previousLogo}
-          onClick={previousBtnHandler}
-          className="w-[80px] p-4 mx-4 mt-1 hover:cursor-pointer hover:opacity-90 rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all"
+          onClick={selectedStation && previousBtnHandler}
+          className={`${
+            selectedStation ? "opacity-100 hover:opacity-90" : "opacity-60"
+          } w-[80px] p-4 mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
           alt="previous"
         />
         {/*  */}
         {mute ? (
           <img
             src={playLogo}
-            onClick={playBtnHandler}
-            className="w-[80px] p-4 mx-4 mt-1 hover:cursor-pointer hover:opacity-90 rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all"
+            onClick={selectedStation && playBtnHandler}
+            className={`${
+              selectedStation ? "opacity-100 hover:opacity-90" : "opacity-60"
+            } w-[80px] p-4 mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
             alt="play"
           />
         ) : (
           <img
             src={stopLogo}
-            onClick={stopBtnHandler}
-            className="w-[80px] p-4 mx-4 mt-1 hover:cursor-pointer hover:opacity-90 rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all"
+            onClick={selectedStation && stopBtnHandler}
+            className={`${
+              selectedStation ? "opacity-100 hover:opacity-90" : "opacity-60"
+            } w-[80px] p-4 mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
             alt="stop"
           />
         )}
         {/*  */}
         <img
           src={nextLogo}
-          onClick={nextBtnHandler}
-          className="w-[80px] p-4 mx-4 mt-1 hover:cursor-pointer hover:opacity-90 rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all"
+          onClick={selectedStation && nextBtnHandler}
+          className={`${
+            selectedStation ? "opacity-100 hover:opacity-90" : "opacity-60"
+          } w-[80px] p-4 mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
           alt="next"
         />
       </div>
