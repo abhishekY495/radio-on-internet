@@ -11,7 +11,10 @@ const initialState = {
 export const fetchCountriesData = createAsyncThunk("countries", async () => {
   const response = await fetch(COUNTRIES_API_URL);
   const data = await response.json();
-  return data;
+  const filteredData = await data.filter(
+    (country) => country.stationcount >= 50
+  );
+  return filteredData;
 });
 
 export const countriesSlice = createSlice({
