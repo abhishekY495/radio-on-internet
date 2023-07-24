@@ -9,6 +9,7 @@ const initialState = {
   loading: false,
   error: false,
   currentIndex: 0,
+  selectedStation: null,
 };
 
 export const fetchRadioStations = createAsyncThunk(
@@ -19,8 +20,9 @@ export const fetchRadioStations = createAsyncThunk(
       RADIO_STATIONS_API_URL + state.radioStations.countryName
     );
     const data = await response.json();
-    shuffleArray(data);
-    return data;
+    const filteredData = data.filter(({ lastcheckok }) => lastcheckok === 1);
+    shuffleArray(filteredData);
+    return filteredData;
   }
 );
 
@@ -40,11 +42,8 @@ export const radioStationsSlice = createSlice({
         (state.currentIndex - 1 + state.data.length) % state.data.length;
       state.selectedStation = state.data[state.currentIndex];
     },
-    playStation: (state) => {
-      state.selectedStation = state.data[state.currentIndex];
-    },
-    stopStation: (state) => {
-      state.selectedStation = "";
+    removeSelectedStation: (state) => {
+      state.selectedStation = null;
     },
   },
   extraReducers: (builder) => {
@@ -66,8 +65,7 @@ export const radioStationsSlice = createSlice({
 
 export const {
   getCountry,
-  playStation,
-  stopStation,
+  removeSelectedStation,
   nextStation,
   previousStation,
 } = radioStationsSlice.actions;
