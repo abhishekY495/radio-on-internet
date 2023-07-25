@@ -11,6 +11,7 @@ const initialState = {
   currentIndex: 0,
   selectedStation: null,
   isReady: false,
+  currentPlayingTrackName: "...",
 };
 
 export const fetchRadioStations = createAsyncThunk(
@@ -52,6 +53,9 @@ export const radioStationsSlice = createSlice({
     setIsReadyToFalse: (state) => {
       state.isReady = false;
     },
+    setCurrentPlayingTrackName: (state, action) => {
+      state.currentPlayingTrackName = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -77,5 +81,6 @@ export const {
   previousStation,
   setIsReadyToTrue,
   setIsReadyToFalse,
+  setCurrentPlayingTrackName,
 } = radioStationsSlice.actions;
 export default radioStationsSlice.reducer;

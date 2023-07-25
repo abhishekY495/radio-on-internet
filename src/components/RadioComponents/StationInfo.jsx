@@ -1,30 +1,56 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import defaultFavicon from "../../assets/radio.png";
+import defaultLogo from "../../assets/defaultLogo.svg";
+import { setCurrentPlayingTrackName } from "../../features/radioStationsSlice";
+import { getTrackData } from "../../functions/getTrackData";
 
 export default function StationInfo() {
   const radioStationsData = useSelector((state) => state.radioStations);
-  const { selectedStation } = radioStationsData;
+  const { loading, selectedStation, currentPlayingTrackName } =
+    radioStationsData;
   const [imageError, setImageError] = useState(false);
-
-  console.log(selectedStation?.url_resolved)
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setImageError(false);
+    getTrackData(
+      selectedStation,
+      dispatch,
+      currentPlayingTrackName,
+      setCurrentPlayingTrackName
+    );
   }, [selectedStation]);
 
   return (
-    <div className="flex gap-1 p-1 bg-neutral-400/50 h-[15%]">
+    <div className="flex gap-1 p-1 pr-2 bg-neutral-800 h-[15%]">
+      {loading && <p className="text-center">Setting up Antenna 📡</p>}
       {selectedStation && (
         <>
           <img
-            src={imageError ? defaultFavicon : selectedStation?.favicon}
-            className="w-[70px] bg-black/50 p-2 rounded transition-all"
-            alt=""
+            src={imageError ? defaultLogo : selectedStation?.favicon}
+            className="w-[70px] h-[70px] bg-white/90 border border-black p-1 rounded transition-all"
+            alt={selectedStation?.name}
             onError={() => setImageError(true)}
           />
-          <p className="truncate">{selectedStation?.name}</p>
+          <div className="grid grid-rows-2 leading-[15px]">
+            <p
+              className="text-lg font-[500] -mt-[3px] truncate"
+              title={selectedStation?.name}
+            >
+              {selectedStation?.name}
+            </p>
+            <p
+              className={`text-[13px] text-neutral-400 ${
+                currentPlayingTrackName?.length >= 55
+                  ? "-mt-[10px]"
+                  : "-mt-[5px]"
+              }`}
+              title={currentPlayingTrackName}
+            >
+              {currentPlayingTrackName}
+            </p>
+          </div>
         </>
       )}
     </div>
