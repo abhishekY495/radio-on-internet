@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import ReactPlayer from "react-player";
@@ -50,24 +50,22 @@ export default function Controls() {
 
   return (
     <>
-      {selectedStation && (
-        <ReactPlayer
-          url={selectedStation.url_resolved}
-          playing
-          volume={mute ? 0 : 1}
-          width={0}
-          height={0}
-          onError={errorOnPlay}
-          onStart={onReadyHandler}
-        />
-      )}
-      <div className="flex justify-around items-center bg-neutral-800 rounded-b-lg h-[17%]">
+      <ReactPlayer
+        url={selectedStation?.url_resolved}
+        playing
+        volume={mute ? 0 : 1}
+        width={0}
+        height={0}
+        onError={errorOnPlay}
+        onStart={onReadyHandler}
+      />
+      <div className="flex justify-around items-center bg-neutral-800 rounded-b-lg py-3">
         <img
           src={previousLogo}
           onClick={selectedStation && previousBtnHandler}
           className={`${
             selectedStation ? "opacity-100 hover:opacity-90" : "opacity-60"
-          } w-[80px] p-4 mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
+          } w-[60px] p-3 mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
           alt="previous"
         />
         {/*  */}
@@ -77,7 +75,7 @@ export default function Controls() {
             onClick={selectedStation && playBtnHandler}
             className={`${
               selectedStation ? "opacity-100 hover:opacity-90" : "opacity-60"
-            } w-[80px] p-4 mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
+            } w-[60px] p-3 mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
             alt="play"
           />
         ) : (
@@ -86,7 +84,7 @@ export default function Controls() {
             onClick={selectedStation && stopBtnHandler}
             className={`${
               selectedStation ? "opacity-100 hover:opacity-90" : "opacity-60"
-            } w-[80px] p-4 mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
+            } w-[60px] p-3 mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
             alt="stop"
           />
         )}
@@ -96,7 +94,7 @@ export default function Controls() {
           onClick={selectedStation && nextBtnHandler}
           className={`${
             selectedStation ? "opacity-100 hover:opacity-90" : "opacity-60"
-          } w-[80px] p-4 mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
+          } w-[60px] p-3 mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
           alt="next"
         />
       </div>

@@ -25,7 +25,7 @@ export default function CountrySelector() {
 
   return (
     <select
-      className="w-full h-[8%] text-black focus:outline-none rounded-b-lg"
+      className="w-full h-[8%] text-black focus:outline-none px-2"
       onChange={selectCountryHandler}
     >
       <option value="" className="text-center">

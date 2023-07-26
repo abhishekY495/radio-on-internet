@@ -1,20 +1,18 @@
 import React from "react";
 
 import SignalLight from "./RadioComponents/SignalLight";
-import AudioVisualizer from "./RadioComponents/AudioVisualizer";
-import StationInfo from "./RadioComponents/StationInfo";
+import Display from "./RadioComponents/Display";
 import CountrySelector from "./RadioComponents/CountrySelector";
 import Controls from "./RadioComponents/Controls";
 
 export default function Radio() {
   return (
     <div
-      className="w-[320px] h-[550px] mx-auto mt-12 p-3 relative
-        border border-neutral-700 rounded-lg"
+      className="w-[320px] h-[550px] mx-auto mt-14 relative
+        border-2 border-neutral-700 rounded-lg"
     >
       <SignalLight />
-      <AudioVisualizer />
-      <StationInfo />
+      <Display />
       <CountrySelector />
       <Controls />
     </div>

@@ -23,7 +23,7 @@ export default function StationInfo() {
   }, [selectedStation]);
 
   return (
-    <div className="flex gap-1 p-1 px-2 bg-neutral-800 h-[15%]">
+    <div className="flex justify-start gap-1 py-[5.5px] border-t border-t-neutral-800">
       {loading && <p className="text-center">Setting up Antenna 📡</p>}
       {selectedStation && (
         <>
@@ -41,7 +41,7 @@ export default function StationInfo() {
               {selectedStation?.name}
             </p>
             <p
-              className={`text-[13px] text-neutral-400 ${
+              className={`text-[13px] text-neutral-400 overflow-hidden ${
                 currentPlayingTrackName?.length >= 55
                   ? "-mt-[10px]"
                   : "-mt-[5px]"
