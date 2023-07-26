@@ -58,7 +58,7 @@ export default function Controls() {
           width={0}
           height={0}
           onError={errorOnPlay}
-          onReady={onReadyHandler}
+          onStart={onReadyHandler}
         />
       )}
       <div className="flex justify-around items-center bg-neutral-800 rounded-b-lg h-[17%]">
