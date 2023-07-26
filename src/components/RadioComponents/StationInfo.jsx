@@ -23,7 +23,7 @@ export default function StationInfo() {
   }, [selectedStation]);
 
   return (
-    <div className="flex gap-1 p-1 pr-2 bg-neutral-800 h-[15%]">
+    <div className="flex gap-1 p-1 px-2 bg-neutral-800 h-[15%]">
       {loading && <p className="text-center">Setting up Antenna 📡</p>}
       {selectedStation && (
         <>
@@ -45,7 +45,7 @@ export default function StationInfo() {
                 currentPlayingTrackName?.length >= 55
                   ? "-mt-[10px]"
                   : "-mt-[5px]"
-              }`}
+              } ${currentPlayingTrackName?.length >= 95 && "truncate"}`}
               title={currentPlayingTrackName}
             >
               {currentPlayingTrackName}

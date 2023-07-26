@@ -5,7 +5,7 @@ import Radio from "./components/Radio";
 function App() {
   return (
     <>
-      <Toaster position="top-center" />
+      <Toaster position="bottom-center" />
       <Radio />
     </>
   );

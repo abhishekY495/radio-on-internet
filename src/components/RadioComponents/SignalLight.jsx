@@ -13,7 +13,7 @@ export default function SignalLight() {
     isReady:
       "bg-green-500 border-green-600 shadow-green-500 shadow-[0px_10px_50px_25px]",
     default:
-      "bg-[#101010] border-[2px] border-red-800/50 shadow-red-800 shadow-[0px_5px_80px_10px]",
+      "bg-[#101010] border-[2px] border-neutral-800/50 shadow-neutral-800 shadow-[0px_5px_80px_10px]",
   };
 
   const signalLightStyle = () => {
