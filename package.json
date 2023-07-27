@@ -13,6 +13,7 @@
     "@radiolise/metadata-client": "^1.0.1",
     "@reduxjs/toolkit": "^1.9.5",
     "react": "^18.2.0",
+    "react-audio-spectrum": "^0.1.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-player": "^2.12.0",
