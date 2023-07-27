@@ -7,8 +7,7 @@ import { getTrackData } from "../../functions/getTrackData";
 
 export default function StationInfo() {
   const radioStationsData = useSelector((state) => state.radioStations);
-  const { loading, selectedStation, currentPlayingTrackName } =
-    radioStationsData;
+  const { selectedStation, currentPlayingTrackName } = radioStationsData;
   const [imageError, setImageError] = useState(false);
   const dispatch = useDispatch();
 
@@ -23,9 +22,8 @@ export default function StationInfo() {
   }, [selectedStation]);
 
   return (
-    <div className="flex justify-start gap-2 py-[4.5px] pl-1 border-t-2 border-t-neutral-800">
-      {loading && <p className="text-center">Setting up Antenna 📡</p>}
-      {selectedStation && (
+    <div className="flex justify-start gap-2 py-[4.5px] px-1 border-t-2 border-t-neutral-800">
+      {selectedStation ? (
         <>
           <img
             src={imageError ? defaultLogo : selectedStation?.favicon}
@@ -49,6 +47,20 @@ export default function StationInfo() {
               title={currentPlayingTrackName}
             >
               {currentPlayingTrackName}
+            </p>
+          </div>
+        </>
+      ) : (
+        <>
+          <img
+            src={defaultLogo}
+            className="w-[70px] h-[70px] bg-white/90 border border-black p-1 opacity-[0.15] rounded transition-all"
+            alt="radio"
+          />
+          <div className="grid grid-rows-2 leading-[15px] opacity-[0.15]">
+            <p className="text-lg font-[500] -mt-[4px]">Station Name Here</p>
+            <p className="text-sm -mt-[8px] leading-4">
+              Current Playing Song Name Here
             </p>
           </div>
         </>

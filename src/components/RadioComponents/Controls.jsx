@@ -44,7 +44,7 @@ export default function Controls() {
         onClick={selectedStation && previousBtnHandler}
         className={`${
           selectedStation ? "opacity-100 hover:opacity-90" : "opacity-60"
-        } w-[60px] p-[15px] mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
+        } w-[60px] p-[15px] mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-blue-900 active:border-b-0 bg-black/70 transition-all`}
         alt="previous"
       />
       {/*  */}
@@ -58,7 +58,7 @@ export default function Controls() {
         }
         className={`${
           selectedStation ? "opacity-100 hover:opacity-80" : "opacity-60"
-        } w-[60px] p-[15px] mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
+        } w-[60px] p-[15px] mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-blue-900 active:border-b-0 bg-black/70 transition-all`}
       />
       {/*  */}
       <img
@@ -66,7 +66,7 @@ export default function Controls() {
         onClick={selectedStation && nextBtnHandler}
         className={`${
           selectedStation ? "opacity-100 hover:opacity-90" : "opacity-60"
-        } w-[60px] p-[15px] mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-black active:border-b-0 bg-black/30 transition-all`}
+        } w-[60px] p-[15px] mx-4 mt-1 hover:cursor-pointer rounded-full border-b-[5px] border-blue-900 active:border-b-0 bg-black/70 transition-all`}
         alt="next"
       />
     </div>
