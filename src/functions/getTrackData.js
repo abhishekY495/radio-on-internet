@@ -20,7 +20,7 @@ export const getTrackData = (
       }
     } else {
       dispatch(setCurrentPlayingTrackName("..."));
-      console.log(error);
+      console.error(error);
     }
   });
 
