@@ -23,7 +23,7 @@ export default function StationInfo() {
   }, [selectedStation]);
 
   return (
-    <div className="flex justify-start gap-1 py-[5.5px] border-t border-t-neutral-800">
+    <div className="flex justify-start gap-2 py-[4.5px] pl-1 border-t-2 border-t-neutral-800">
       {loading && <p className="text-center">Setting up Antenna 📡</p>}
       {selectedStation && (
         <>
@@ -35,7 +35,7 @@ export default function StationInfo() {
           />
           <div className="grid grid-rows-2 leading-[15px]">
             <p
-              className="text-lg font-[500] -mt-[3px] truncate"
+              className="text-lg font-[500] -mt-[4px] truncate"
               title={selectedStation?.name}
             >
               {selectedStation?.name}
