@@ -6,8 +6,34 @@
 
 /*  */
 
+:root {
+  --background-color: black;
+  --scrollbar-thumb-color: #5d5d5d;
+  --scrollbar-hover-color: #2e2e2e;
+  --scrollbar-width: 8px;
+  --scrollbar-border-radius: 3px;
+}
+
 body {
   background-color: black;
   color: white;
   font-family: "Poppins", sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);
+  border-radius: var(--scrollbar-border-radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover-color);
 }
