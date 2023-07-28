@@ -4,7 +4,7 @@ import { RADIO_STATIONS_API_URL } from "../utils/api_urls";
 import { shuffleArray } from "../utils/shuffleArray";
 
 const initialState = {
-  countryName: "",
+  stationBy: "",
   data: [],
   loading: false,
   error: false,
@@ -19,13 +19,29 @@ export const fetchRadioStations = createAsyncThunk(
   "radioStations",
   async (_, { getState }) => {
     const state = getState();
-    const response = await fetch(
-      RADIO_STATIONS_API_URL + state.radioStations.countryName
-    );
-    const data = await response.json();
-    const filteredData = data.filter(({ lastcheckok }) => lastcheckok === 1);
-    shuffleArray(filteredData);
-    return filteredData;
+    if (state.radioStations.stationBy.includes("language")) {
+      const value = state.radioStations.stationBy.split("-")[0];
+      const API_URL = RADIO_STATIONS_API_URL + "language=" + value;
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      const filteredData = data.filter(
+        ({ lastcheckok, url_resolved }) =>
+          lastcheckok === 1 && !url_resolved.includes(".m3u8")
+      );
+      shuffleArray(filteredData);
+      return filteredData;
+    } else {
+      const API_URL =
+        RADIO_STATIONS_API_URL + "country=" + state.radioStations.stationBy;
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      const filteredData = data.filter(
+        ({ lastcheckok, url_resolved }) =>
+          lastcheckok === 1 && !url_resolved.includes(".m3u8")
+      );
+      shuffleArray(filteredData);
+      return filteredData;
+    }
   }
 );
 
@@ -33,8 +49,8 @@ export const radioStationsSlice = createSlice({
   name: "radioStations",
   initialState,
   reducers: {
-    getCountry: (state, action) => {
-      state.countryName = action.payload;
+    getSelectedValue: (state, action) => {
+      state.stationBy = action.payload;
     },
     nextStation: (state) => {
       state.currentIndex = (state.currentIndex + 1) % state.data.length;
@@ -82,7 +98,7 @@ export const radioStationsSlice = createSlice({
 });
 
 export const {
-  getCountry,
+  getSelectedValue,
   removeSelectedStation,
   nextStation,
   previousStation,
