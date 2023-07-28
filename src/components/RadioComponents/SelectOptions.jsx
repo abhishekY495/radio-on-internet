@@ -1,10 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
 
 import {
   fetchRadioStations,
   getSelectedValue,
   removeSelectedStation,
+  setCurrentPlayingTrackName,
 } from "../../features/radioStationsSlice";
 
 export default function SelectOptions() {
@@ -13,10 +15,15 @@ export default function SelectOptions() {
   const languagesData = useSelector((state) => state.languages);
 
   const selectHandler = (e) => {
-    dispatch(removeSelectedStation());
     const selectedValue = e.target.value;
-    dispatch(getSelectedValue(selectedValue));
-    dispatch(fetchRadioStations());
+    if (selectedValue.length === 0) {
+      toast("Select Country or Language");
+    } else {
+      dispatch(removeSelectedStation());
+      dispatch(setCurrentPlayingTrackName("..."));
+      dispatch(getSelectedValue(selectedValue));
+      dispatch(fetchRadioStations());
+    }
   };
 
   return (

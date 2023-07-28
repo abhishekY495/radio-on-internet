@@ -58,9 +58,9 @@ export default function StationInfo() {
             alt="radio"
           />
           <div className="grid grid-rows-2 leading-[15px] opacity-[0.15]">
-            <p className="text-lg font-[500] -mt-[4px]">Station Name Here</p>
+            <p className="text-lg font-[500] -mt-[4px]">Station Name</p>
             <p className="text-sm -mt-[8px] leading-4">
-              Current Playing Song Name Here
+              Current Playing Song Name
             </p>
           </div>
         </>
