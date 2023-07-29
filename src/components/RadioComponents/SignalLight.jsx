@@ -3,15 +3,17 @@ import { useSelector } from "react-redux";
 
 export default function SignalLight() {
   const radioStationsData = useSelector((state) => state.radioStations);
-  const { loading, selectedStation, isReady } = radioStationsData;
+  const { loading, selectedStation, isReady, playError } = radioStationsData;
 
   const styleClassNames = {
     loading:
       "bg-red-500 border-red-600 shadow-red-500 shadow-[0px_10px_50px_25px] animate-pulse-fast",
     selectedStation:
-      "bg-red-500 border-red-600 shadow-red-500 shadow-[0px_10px_50px_25px] animate-pulse",
+      "bg-orange-500 border-orange-600 shadow-orange-500 shadow-[0px_10px_50px_25px] animate-pulse",
     isReady:
       "bg-green-500 border-green-600 shadow-green-500 shadow-[0px_10px_50px_25px]",
+    playError:
+      "bg-red-500 border-red-600 shadow-red-500 shadow-[0px_10px_50px_25px]",
     default:
       "bg-[#101010] border-[2px] border-neutral-800/70 shadow-neutral-800 shadow-[0px_5px_80px_10px]",
   };
@@ -22,6 +24,8 @@ export default function SignalLight() {
     } else if (selectedStation) {
       if (isReady) {
         return styleClassNames.isReady;
+      } else if (playError) {
+        return styleClassNames.playError;
       } else {
         return styleClassNames.selectedStation;
       }
