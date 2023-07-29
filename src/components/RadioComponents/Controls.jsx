@@ -13,6 +13,7 @@ import {
   setIsReadyToFalse,
   setIsMuteToTrue,
   setIsMuteToFalse,
+  setIsPlayError,
 } from "../../features/radioStationsSlice";
 
 export default function Controls() {
@@ -23,6 +24,7 @@ export default function Controls() {
 
   const nextBtnHandler = () => {
     if (selectedStation) {
+      dispatch(setIsPlayError(false));
       dispatch(setIsReadyToFalse());
       dispatch(removeSelectedStation());
       dispatch(nextStation());
@@ -32,6 +34,7 @@ export default function Controls() {
   };
   const previousBtnHandler = () => {
     if (selectedStation) {
+      dispatch(setIsPlayError(false));
       dispatch(setIsReadyToFalse());
       dispatch(removeSelectedStation());
       dispatch(previousStation());

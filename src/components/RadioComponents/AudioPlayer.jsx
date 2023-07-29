@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 
 import {
-  nextStation,
-  removeSelectedStation,
+  setIsPlayError,
   setIsReadyToTrue,
 } from "../../features/radioStationsSlice";
 
@@ -14,9 +13,8 @@ export default function AudioPlayer() {
   const dispatch = useDispatch();
 
   const onErrorHandler = () => {
-    toast.error("Signal lost, Playing next Station");
-    dispatch(removeSelectedStation());
-    dispatch(nextStation());
+    toast.error("Signal lost, Cannot play.");
+    dispatch(setIsPlayError(true));
   };
 
   const onPlayHandler = () => {
