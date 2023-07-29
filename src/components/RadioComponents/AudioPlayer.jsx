@@ -2,10 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 
-import {
-  setIsPlayError,
-  setIsReadyToTrue,
-} from "../../features/radioStationsSlice";
+import { setIsPlayError, setIsReady } from "../../features/radioStationsSlice";
 
 export default function AudioPlayer() {
   const radioStationsData = useSelector((state) => state.radioStations);
@@ -18,7 +15,7 @@ export default function AudioPlayer() {
   };
 
   const onPlayHandler = () => {
-    dispatch(setIsReadyToTrue());
+    dispatch(setIsReady(true));
   };
 
   return (

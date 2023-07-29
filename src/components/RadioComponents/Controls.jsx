@@ -10,9 +10,8 @@ import {
   nextStation,
   previousStation,
   removeSelectedStation,
-  setIsReadyToFalse,
-  setIsMuteToTrue,
-  setIsMuteToFalse,
+  setIsReady,
+  setIsMute,
   setIsPlayError,
 } from "../../features/radioStationsSlice";
 
@@ -25,7 +24,7 @@ export default function Controls() {
   const nextBtnHandler = () => {
     if (selectedStation) {
       dispatch(setIsPlayError(false));
-      dispatch(setIsReadyToFalse());
+      dispatch(setIsReady(false));
       dispatch(removeSelectedStation());
       dispatch(nextStation());
     } else {
@@ -35,7 +34,7 @@ export default function Controls() {
   const previousBtnHandler = () => {
     if (selectedStation) {
       dispatch(setIsPlayError(false));
-      dispatch(setIsReadyToFalse());
+      dispatch(setIsReady(false));
       dispatch(removeSelectedStation());
       dispatch(previousStation());
     } else {
@@ -44,14 +43,14 @@ export default function Controls() {
   };
   const playBtnHandler = () => {
     if (selectedStation) {
-      dispatch(setIsMuteToFalse());
+      dispatch(setIsMute(false));
     } else {
       toast("Select Country or Language");
     }
   };
   const stopBtnHandler = () => {
     if (selectedStation) {
-      dispatch(setIsMuteToTrue());
+      dispatch(setIsMute(true));
     } else {
       toast("Select Country or Language");
     }

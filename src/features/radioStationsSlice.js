@@ -65,20 +65,14 @@ export const radioStationsSlice = createSlice({
     removeSelectedStation: (state) => {
       state.selectedStation = null;
     },
-    setIsReadyToTrue: (state) => {
-      state.isReady = true;
-    },
-    setIsReadyToFalse: (state) => {
-      state.isReady = false;
+    setIsReady: (state, action) => {
+      state.isReady = action.payload;
     },
     setCurrentPlayingTrackName: (state, action) => {
       state.currentPlayingTrackName = action.payload;
     },
-    setIsMuteToTrue: (state) => {
-      state.isMute = true;
-    },
-    setIsMuteToFalse: (state) => {
-      state.isMute = false;
+    setIsMute: (state, action) => {
+      state.isMute = action.payload;
     },
     setIsPlayError: (state, action) => {
       state.playError = action.payload;
@@ -106,11 +100,9 @@ export const {
   removeSelectedStation,
   nextStation,
   previousStation,
-  setIsReadyToTrue,
-  setIsReadyToFalse,
+  setIsReady,
   setCurrentPlayingTrackName,
-  setIsMuteToTrue,
-  setIsMuteToFalse,
+  setIsMute,
   setIsPlayError,
 } = radioStationsSlice.actions;
 export default radioStationsSlice.reducer;
