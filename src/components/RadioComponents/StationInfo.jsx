@@ -22,7 +22,7 @@ export default function StationInfo() {
   }, [selectedStation]);
 
   return (
-    <div className="flex justify-start gap-2 py-[4.5px] px-1 border-t-2 border-t-neutral-800">
+    <div className="flex h-[20%] justify-start gap-2 py-[4.5px] px-1 border-t-2 border-t-neutral-800">
       {selectedStation ? (
         <>
           <img
