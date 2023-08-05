@@ -1,21 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { LANGUAGES_API_URL } from "../utils/api_urls";
-
 const initialState = {
   data: [],
   loading: false,
   error: false,
 };
 
-export const fetchLanguagesData = createAsyncThunk("languages", async () => {
-  const response = await fetch(LANGUAGES_API_URL);
-  const data = await response.json();
-  const filteredData = await data.filter(
-    ({ stationcount }) => stationcount >= 30
-  );
-  return filteredData;
-});
+export const fetchLanguagesData = createAsyncThunk(
+  "languages",
+  async (apiUrl) => {
+    const response = await fetch(apiUrl + "/json/languages");
+    const data = await response.json();
+    const filteredData = await data.filter(
+      ({ stationcount }) => stationcount >= 30
+    );
+    return filteredData;
+  }
+);
 
 export const languagesSlice = createSlice({
   name: "languages",

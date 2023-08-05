@@ -13,6 +13,7 @@ export default function SelectOptions() {
   const dispatch = useDispatch();
   const countriesData = useSelector((state) => state.countries);
   const languagesData = useSelector((state) => state.languages);
+  const apiData = useSelector((state) => state.apiSlice);
 
   const selectHandler = (e) => {
     const selectedValue = e.target.value;
@@ -22,7 +23,7 @@ export default function SelectOptions() {
       dispatch(removeSelectedStation());
       dispatch(setCurrentPlayingTrackName("..."));
       dispatch(getSelectedValue(selectedValue));
-      dispatch(fetchRadioStations());
+      dispatch(fetchRadioStations(apiData.apiUrl));
     }
   };
 

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-hot-toast";
 
 import SignalLight from "./RadioComponents/SignalLight";
 import Display from "./RadioComponents/Display";
@@ -8,25 +7,22 @@ import SelectOptions from "./RadioComponents/SelectOptions";
 import Controls from "./RadioComponents/Controls";
 import { fetchCountriesData } from "../features/countriesSlice";
 import { fetchLanguagesData } from "../features/languagesSlice";
+import { getCountriesAndLanguagesData } from "../functions/getCountriesAndLanguagesData";
 
 export default function Radio() {
-  const countriesData = useSelector((state) => state.countries);
-  const languagesData = useSelector((state) => state.languages);
-  const radioStationsData = useSelector((state) => state.radioStations);
   const dispatch = useDispatch();
-
-  if (
-    countriesData?.error ||
-    languagesData?.error ||
-    radioStationsData?.error
-  ) {
-    toast.error("Something went Wrong \n Try again later");
-  }
+  const apiData = useSelector((state) => state.apiSlice);
 
   useEffect(() => {
-    dispatch(fetchCountriesData());
-    dispatch(fetchLanguagesData());
-  }, []);
+    if (apiData.apiUrl.length !== 0) {
+      getCountriesAndLanguagesData(
+        dispatch,
+        fetchCountriesData,
+        fetchLanguagesData,
+        apiData
+      );
+    }
+  }, [apiData]);
 
   return (
     <div

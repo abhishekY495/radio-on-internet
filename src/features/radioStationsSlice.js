@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { RADIO_STATIONS_API_URL } from "../utils/api_urls";
 import { shuffleArray } from "../utils/shuffleArray";
 
 const initialState = {
@@ -18,11 +17,12 @@ const initialState = {
 
 export const fetchRadioStations = createAsyncThunk(
   "radioStations",
-  async (_, { getState }) => {
+  async (apiUrl, { getState }) => {
     const state = getState();
     if (state.radioStations.stationBy.includes("language")) {
       const value = state.radioStations.stationBy.split("-")[0];
-      const API_URL = RADIO_STATIONS_API_URL + "language=" + value;
+      const API_URL =
+        apiUrl + "/json/stations/search?hidebroken=true&language=" + value;
       const response = await fetch(API_URL);
       const data = await response.json();
       const filteredData = data.filter(
@@ -33,7 +33,9 @@ export const fetchRadioStations = createAsyncThunk(
       return filteredData;
     } else {
       const API_URL =
-        RADIO_STATIONS_API_URL + "country=" + state.radioStations.stationBy;
+        apiUrl +
+        "/json/stations/search?hidebroken=true&country=" +
+        state.radioStations.stationBy;
       const response = await fetch(API_URL);
       const data = await response.json();
       const filteredData = data.filter(
