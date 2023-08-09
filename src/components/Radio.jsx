@@ -5,6 +5,7 @@ import SignalLight from "./RadioComponents/SignalLight";
 import Display from "./RadioComponents/Display";
 import SelectOptions from "./RadioComponents/SelectOptions";
 import Controls from "./RadioComponents/Controls";
+import MenuButton from "./RadioComponents/MenuButton";
 import { fetchCountriesData } from "../features/countriesSlice";
 import { fetchLanguagesData } from "../features/languagesSlice";
 import { getCountriesAndLanguagesData } from "../functions/getCountriesAndLanguagesData";
@@ -31,6 +32,7 @@ export default function Radio() {
     >
       <SignalLight />
       <Display />
+      <MenuButton />
       <SelectOptions />
       <Controls />
     </div>
