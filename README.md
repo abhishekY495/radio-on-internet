@@ -21,7 +21,7 @@ Check out the site here - [https://radio-on-internet.netlify.app](https://radio-
 ```
 
 ## 🔮 Future Features
-- [ ] Search stations
+- [x] Search stations
 - [ ] Bookmark stations
 <br>
 
