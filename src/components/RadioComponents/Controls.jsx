@@ -17,12 +17,12 @@ import {
 
 export default function Controls() {
   const radioStationsData = useSelector((state) => state.radioStations);
-  const { selectedStation, isMute } = radioStationsData;
+  const { selectedStation, isMute, stationBy } = radioStationsData;
 
   const dispatch = useDispatch();
 
   const nextBtnHandler = () => {
-    if (selectedStation) {
+    if (stationBy) {
       dispatch(setIsPlayError(false));
       dispatch(setIsReady(false));
       dispatch(removeSelectedStation());
@@ -32,7 +32,7 @@ export default function Controls() {
     }
   };
   const previousBtnHandler = () => {
-    if (selectedStation) {
+    if (stationBy) {
       dispatch(setIsPlayError(false));
       dispatch(setIsReady(false));
       dispatch(removeSelectedStation());

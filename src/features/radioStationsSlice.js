@@ -55,6 +55,10 @@ export const radioStationsSlice = createSlice({
     getSelectedValue: (state, action) => {
       state.stationBy = action.payload;
     },
+    setSelectedStation: (state, action) => {
+      state.selectedStation = action.payload;
+      state.stationBy = "";
+    },
     nextStation: (state) => {
       state.currentIndex = (state.currentIndex + 1) % state.data.length;
       state.selectedStation = state.data[state.currentIndex];
@@ -99,6 +103,7 @@ export const radioStationsSlice = createSlice({
 
 export const {
   getSelectedValue,
+  setSelectedStation,
   removeSelectedStation,
   nextStation,
   previousStation,
