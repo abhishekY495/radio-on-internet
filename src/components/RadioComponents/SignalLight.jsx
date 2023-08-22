@@ -37,8 +37,8 @@ export default function SignalLight() {
   return (
     <div
       className={`${signalLightStyle()}
-        h-6 w-6 border-b-0
-        absolute -top-[27px] left-8
+        h-7 w-6 border-b-0 
+        absolute -top-[30.8px] left-8
         rounded-t-full transition-all
         hover:cursor-pointer`}
     ></div>
