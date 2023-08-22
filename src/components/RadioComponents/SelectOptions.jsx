@@ -7,6 +7,9 @@ import {
   getSelectedValue,
   removeSelectedStation,
   setCurrentPlayingTrackName,
+  setIsMute,
+  setIsPlayError,
+  setIsReady,
 } from "../../features/radioStationsSlice";
 
 export default function SelectOptions() {
@@ -14,12 +17,17 @@ export default function SelectOptions() {
   const countriesData = useSelector((state) => state.countries);
   const languagesData = useSelector((state) => state.languages);
   const apiData = useSelector((state) => state.apiSlice);
+  const radioStationsData = useSelector((state) => state.radioStations);
+  const { stationBy } = radioStationsData;
 
   const selectHandler = (e) => {
     const selectedValue = e.target.value;
     if (selectedValue.length === 0) {
       toast("Select Country or Language");
     } else {
+      dispatch(setIsPlayError(false));
+      dispatch(setIsReady(false));
+      dispatch(setIsMute(true));
       dispatch(removeSelectedStation());
       dispatch(setCurrentPlayingTrackName("..."));
       dispatch(getSelectedValue(selectedValue));
@@ -31,6 +39,7 @@ export default function SelectOptions() {
     <select
       className="w-full h-[8%] bg-neutral-100 text-black focus:outline-none px-2 capitalize"
       onChange={selectHandler}
+      value={stationBy}
     >
       <option value="" className="text-center">
         {countriesData?.loading
