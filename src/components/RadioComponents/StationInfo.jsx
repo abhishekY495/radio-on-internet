@@ -27,22 +27,24 @@ export default function StationInfo() {
         <>
           <img
             src={imageError ? defaultLogo : selectedStation?.favicon}
-            className="w-[70px] h-[70px] bg-white/90 border border-black p-1 rounded transition-all"
+            className={`w-[90px] mt-[2px] h-[90px] ${
+              imageError ? "bg-zinc-100" : "bg-zinc-400"
+            } border border-black p-1 rounded transition-all`}
             alt={selectedStation?.name}
             onError={() => setImageError(true)}
           />
           <div className="grid grid-rows-2 leading-[15px]">
             <p
-              className="text-lg font-[500] -mt-[4px] truncate"
+              className="text-xl font-[500] -mt-[1px] truncate"
               title={selectedStation?.name}
             >
               {selectedStation?.name}
             </p>
             <p
-              className={`text-[13px] text-neutral-400 overflow-hidden ${
+              className={`text-[15px] text-neutral-400 overflow-hidden ${
                 currentPlayingTrackName?.length >= 55
                   ? "-mt-[10px]"
-                  : "-mt-[5px]"
+                  : "-mt-[15px]"
               } ${currentPlayingTrackName?.length >= 95 && "truncate"}`}
               title={currentPlayingTrackName}
             >
@@ -54,11 +56,11 @@ export default function StationInfo() {
         <>
           <img
             src={defaultLogo}
-            className="w-[70px] h-[70px] bg-white/90 border border-black p-1 opacity-[0.15] rounded transition-all"
+            className="w-[90px] h-[90px] bg-white/90 border border-black p-1 opacity-[0.15] rounded transition-all"
             alt="radio"
           />
           <div className="grid grid-rows-2 leading-[15px] opacity-[0.15]">
-            <p className="text-lg font-[500] -mt-[4px]">Station Name</p>
+            <p className="text-xl font-[500] -mt-[1px]">Station Name</p>
             <p className="text-sm -mt-[8px] leading-4">
               Current Playing Song Name
             </p>

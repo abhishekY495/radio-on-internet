@@ -6,7 +6,7 @@ import StationInfo from "./StationInfo";
 
 export default function Display() {
   return (
-    <div className="w-full h-[75%] border border-neutral-800 rounded-t-lg p-1 pb-0">
+    <div className="w-full h-[77.5%] border border-neutral-800 rounded-t-lg p-1 pb-0">
       <AudioPlayer />
       <Visualizer />
       <StationInfo />

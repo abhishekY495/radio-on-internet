@@ -13,11 +13,11 @@ export default function Visualizer() {
       <div className={`${selectedStation ? "block" : "hidden"} h-[80%] px-2`}>
         <AudioSpectrum
           id="canvas"
-          height={318}
-          width={290}
+          height={420}
+          width={335}
           audioId={"audio-element"}
           capHeight={0}
-          meterWidth={3}
+          meterWidth={2}
           meterCount={80}
           meterColor={[
             { stop: 0, color: "gray" },

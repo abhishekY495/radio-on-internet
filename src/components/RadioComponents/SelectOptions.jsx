@@ -37,28 +37,28 @@ export default function SelectOptions() {
 
   return (
     <select
-      className="w-full h-[8%] bg-neutral-100 text-black focus:outline-none px-2 capitalize"
+      className="w-full h-[8%] bg-neutral-100 text-black focus:outline-none px-2 capitalize text-lg"
       onChange={selectHandler}
       value={stationBy}
     >
-      <option value="" className="text-center">
+      <option value="" className="text-center text-lg">
         {countriesData?.loading
           ? "Getting Countries and Languages"
           : "Select Country or Language"}
       </option>
       {/*  */}
-      <option value="" className="text-center font-semibold bg-neutral-300">
+      <option value="" className="text-center font-semibold bg-neutral-300 text-xl">
         Countries
       </option>
       {countriesData?.data?.map(({ name, iso_3166_1 }) => {
         return (
-          <option key={iso_3166_1} value={name} className="text-sm">
+          <option key={iso_3166_1} value={name} className="capitalize">
             {name}
           </option>
         );
       })}
       {/*  */}
-      <option value="" className="text-center font-semibold bg-neutral-300">
+      <option value="" className="text-center font-semibold bg-neutral-300 text-xl">
         Languages
       </option>
       {languagesData?.data?.map(({ name }) => {
@@ -66,7 +66,7 @@ export default function SelectOptions() {
           <option
             key={name}
             value={name + "-language"}
-            className="text-sm capitalize"
+            className="capitalize"
           >
             {name}
           </option>

@@ -25,13 +25,13 @@ export default function MenuModal({ isOpen, onClose }) {
         onClick={onClose}
       >
         <div
-          className="flex flex-col gap-2 w-[320px] h-[460px] m-auto p-3 mt-14 bg-black rounded-lg"
+          className="flex flex-col gap-2 w-[350px] h-[530px] m-auto p-3 mt-[60px] bg-black rounded-lg"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex gap-2">
             <button
               onClick={searchBtnHandler}
-              className={`w-full p-2 bg-neutral-600 rounded hover:bg-neutral-700 transition-all ${
+              className={`w-full p-2 bg-neutral-600 rounded hover:bg-neutral-700 transition-all text-lg ${
                 showSearch ? "bg-neutral-700 font-[500]" : "font-[200]"
               }`}
             >
@@ -39,7 +39,7 @@ export default function MenuModal({ isOpen, onClose }) {
             </button>
             <button
               onClick={bookmarkBtnHandler}
-              className={`w-full p-2 bg-neutral-600 rounded hover:bg-neutral-700 transition-all ${
+              className={`w-full p-2 bg-neutral-600 rounded hover:bg-neutral-700 transition-all text-lg ${
                 showBookmark ? "bg-neutral-700 font-[500]" : "font-[200]"
               }`}
             >

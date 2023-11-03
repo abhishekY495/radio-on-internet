@@ -14,7 +14,7 @@ export default function AudioPlayer() {
   const dispatch = useDispatch();
 
   const onErrorHandler = () => {
-    toast.error("Signal lost, Cannot play.");
+    toast.error("Signal lost, Play next");
     dispatch(setIsPlayError(true));
   };
 

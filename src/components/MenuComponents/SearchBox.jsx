@@ -22,7 +22,7 @@ export default function SearchBox() {
       } else {
         dispatch(resetData());
       }
-    }, 500);
+    }, 800);
     return () => clearTimeout(timeout);
   }, [searchValue]);
 
@@ -34,7 +34,7 @@ export default function SearchBox() {
     <div className="flex flex-col h-full">
       <input
         type="text"
-        className="w-full rounded-sm border pl-2 py-1 text-black focus:outline-0 focus:border-black transition-all"
+        className="w-full rounded-sm border pl-2 py-1 text-black focus:outline-0 focus:border-black transition-all text-lg"
         placeholder="Search station"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
