@@ -33,19 +33,15 @@ export default function StationInfo() {
             alt={selectedStation?.name}
             onError={() => setImageError(true)}
           />
-          <div className="grid grid-rows-2 leading-[15px]">
+          <div className="flex flex-col">
             <p
-              className="text-xl font-[500] -mt-[1px] truncate"
+              className="text-xl font-[500] -mt-[1px] truncate overflow-hidden w-[240px]"
               title={selectedStation?.name}
             >
               {selectedStation?.name}
             </p>
             <p
-              className={`text-[15px] text-neutral-400 overflow-hidden ${
-                currentPlayingTrackName?.length >= 55
-                  ? "-mt-[10px]"
-                  : "-mt-[15px]"
-              } ${currentPlayingTrackName?.length >= 95 && "truncate"}`}
+              className="text-[15px] leading-[18px] text-neutral-400 mt-1 overflow-hidden h-[57px] w-[240px]"
               title={currentPlayingTrackName}
             >
               {currentPlayingTrackName}
