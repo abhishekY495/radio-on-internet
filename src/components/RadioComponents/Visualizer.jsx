@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AudioSpectrum from "react-audio-spectrum";
 import { useSelector } from "react-redux";
 
@@ -8,24 +8,45 @@ export default function Visualizer() {
   const stationsData = useSelector((state) => state.radioStations);
   const { selectedStation } = stationsData;
 
+  const windowWidth = window.innerWidth;
+  console.log(windowWidth);
+
   return (
     <>
       <div className={`${selectedStation ? "block" : "hidden"} h-[80%] px-2`}>
-        <AudioSpectrum
-          id="canvas"
-          height={420}
-          width={335}
-          audioId={"audio-element"}
-          capHeight={0}
-          meterWidth={2}
-          meterCount={80}
-          meterColor={[
-            { stop: 0, color: "gray" },
-            { stop: 0.5, color: "gray" },
-            { stop: 1, color: "gray" },
-          ]}
-          gap={4}
-        />
+        {windowWidth < 400 ? (
+          <AudioSpectrum
+            id="canvas"
+            height={356}
+            width={290}
+            audioId={"audio-element"}
+            capHeight={0}
+            meterWidth={2}
+            meterCount={80}
+            meterColor={[
+              { stop: 0, color: "gray" },
+              { stop: 0.5, color: "gray" },
+              { stop: 1, color: "gray" },
+            ]}
+            gap={4}
+          />
+        ) : (
+          <AudioSpectrum
+            id="canvas"
+            height={420}
+            width={335}
+            audioId={"audio-element"}
+            capHeight={0}
+            meterWidth={2}
+            meterCount={80}
+            meterColor={[
+              { stop: 0, color: "gray" },
+              { stop: 0.5, color: "gray" },
+              { stop: 1, color: "gray" },
+            ]}
+            gap={4}
+          />
+        )}
       </div>
       <div
         className={`${

@@ -27,8 +27,9 @@ export default function Radio() {
 
   return (
     <div
-      className="w-[360px] h-[700px] mx-auto mt-[55px] relative
-        border-[3px] border-neutral-800 rounded-lg"
+      className="w-[360px] h-[700px] mx-auto mt-[80px] relative
+        border-[3px] border-neutral-800 rounded-lg
+        max-[400px]:mt-[60px] max-[400px]:w-[320px] max-[400px]:h-[600px]"
     >
       <SignalLight />
       <Display />

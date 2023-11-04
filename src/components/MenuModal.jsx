@@ -25,7 +25,7 @@ export default function MenuModal({ isOpen, onClose }) {
         onClick={onClose}
       >
         <div
-          className="flex flex-col gap-2 w-[350px] h-[530px] m-auto p-3 mt-[60px] bg-black rounded-lg"
+          className="flex flex-col gap-2 w-[350px] h-[530px] m-auto p-3 mt-[85px] bg-black rounded-lg max-[400px]:w-[320px] max-[400px]:h-[505px] max-[400px]:mt-[65px]"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex gap-2">
