@@ -9,7 +9,6 @@ export default function Visualizer() {
   const { selectedStation } = stationsData;
 
   const windowWidth = window.innerWidth;
-  console.log(windowWidth);
 
   return (
     <>
