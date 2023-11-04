@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import defaultLogo from "../assets/defaultLogo.svg";
+import defaultLogo from "../../assets/defaultLogo.svg";
 import {
   removeSelectedStation,
   setCurrentPlayingTrackName,
   setIsPlayError,
   setIsReady,
   setSelectedStation,
-} from "../features/radioStationsSlice";
+} from "../../features/radioStationsSlice";
 
 export default function SearchedStation({ station }) {
   const [imageError, setImageError] = useState(false);

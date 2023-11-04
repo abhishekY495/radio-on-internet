@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-import MenuModal from "../MenuModal";
+import MenuModal from "../MenuComponents/MenuModal";
 
 export default function MenuButton() {
   const [openModal, setOpenModal] = useState(false);

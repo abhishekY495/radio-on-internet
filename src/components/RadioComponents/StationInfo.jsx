@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import defaultLogo from "../../assets/defaultLogo.svg";
+import defaultRadioIcon from "../../assets/defaultRadioIcon.png";
 import { setCurrentPlayingTrackName } from "../../features/radioStationsSlice";
 import { getTrackData } from "../../functions/getTrackData";
 
@@ -26,10 +26,10 @@ export default function StationInfo() {
       {selectedStation ? (
         <>
           <img
-            src={imageError ? defaultLogo : selectedStation?.favicon}
+            src={imageError ? defaultRadioIcon : selectedStation?.favicon}
             className={`w-[90px] mt-[2px] h-[90px] ${
-              imageError ? "bg-zinc-100" : "bg-zinc-400"
-            } border border-black p-1 rounded transition-all max-[400px]:w-[80px] max-[400px]:h-[75px]`}
+              imageError ? "bg-zinc-100 p-3 pt-5 pb-2" : "bg-zinc-400"
+            } border border-black p-1 rounded transition-all max-[400px]:w-[80px] max-[400px]:h-[75px] hover:cursor-pointer`}
             alt={selectedStation?.name}
             onError={() => setImageError(true)}
           />
@@ -51,7 +51,7 @@ export default function StationInfo() {
       ) : (
         <>
           <img
-            src={defaultLogo}
+            src={defaultRadioIcon}
             className="w-[90px] h-[90px] bg-white/90 border border-black p-1 opacity-[0.15] rounded transition-all max-[400px]:w-[80px] max-[400px]:h-[75px]"
             alt="radio"
           />

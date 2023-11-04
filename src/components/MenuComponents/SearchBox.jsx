@@ -5,7 +5,7 @@ import {
   fetchRadioStationsBySearch,
   resetData,
 } from "../../features/SearchSlice";
-import SearchedStation from "../SearchedStation";
+import SearchedStation from "./SearchedStation";
 
 export default function SearchBox() {
   const [searchValue, setSearchValue] = useState("");
@@ -41,7 +41,7 @@ export default function SearchBox() {
       />
       <div
         className={`flex flex-col gap-2 rounded bg-neutral-900 px-1 pt-2 pb-8 ${
-          searchValue && "overflow-y-scroll h-[80%]"
+          searchValue && "overflow-y-scroll h-full"
         }`}
       >
         {searchValue?.trim()?.length > 0 && searchedStationData?.loading && (
